@@ -36,7 +36,7 @@ jobs:
             cx_tenant: ${{ secrets.TENANT }}
             cx_client_id: ${{ secrets.CLIENT_ID }}
             cx_client_secret: ${{ secrets.SECRET }}
-            additional_params: --report-format sonar --debug --output-path .
+            additional_params: --report-format sonar --debug --output-path '/home/runner/work/maven-samples/maven-samples/multi-module/server'
       - name: Sonar analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
