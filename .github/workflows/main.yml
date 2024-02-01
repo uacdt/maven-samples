@@ -1,5 +1,6 @@
 name: Checkmarx One Scan
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -36,9 +37,9 @@ jobs:
             cx_tenant: ${{ secrets.TENANT }}
             cx_client_id: ${{ secrets.CLIENT_ID }}
             cx_client_secret: ${{ secrets.SECRET }}
-            additional_params: --debug --report-format json,sonar 
+            additional_params: --debug --report-format json,sonar --output-path .
       - name: Sonar analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           GITHUB_TOKEN: ${{ github.token }}
-        run: mvn -X -B clean verify sonar:sonar -Dsonar.token= ${{ secrets.SONAR_TOKEN }} -Dsonar.branch.name=$(Build.SourceBranchName) -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=margaritalm -Dsonar.projectKey=margaritalm_maven-samples -Dsonar.externalIssuesReportPaths=\cx_result_sonar.json
+        run: mvn -X -B clean verify sonar:sonar -Dsonar.token= ${{ secrets.SONAR_TOKEN }} -Dsonar.branch.name=$(Build.SourceBranchName) -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=margaritalm -Dsonar.projectKey=margaritalm_maven-samples -Dsonar.externalIssuesReportPaths=cx_result_sonar.json
