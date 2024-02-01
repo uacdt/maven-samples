@@ -49,5 +49,4 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           GITHUB_TOKEN: ${{ github.token }}
        # run: mvn -B verify sonar:sonar -Dsonar.token= ${{ secrets.SONAR_TOKEN }} -Dsonar.projectBaseDir=. -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=uacdt -Dsonar.projectKey=uacdt_maven-samples -Dsonar.externalIssuesReportPaths=cx_result_sonar.json
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectBaseDir=. -Dsonar.token= ${{ secrets.SONAR_TOKEN }}  -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=uacdt -Dsonar.projectKey=uacdt_maven-samples -Dsonar.externalIssuesReportPaths=cx_result_sonar.json
-
+        run: mvn -X -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectBaseDir=. -Dsonar.token= ${{ secrets.SONAR_TOKEN }}  -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=uacdt -Dsonar.projectKey=uacdt_maven-samples -Dsonar.externalIssuesReportPaths=cx_result_sonar.json
