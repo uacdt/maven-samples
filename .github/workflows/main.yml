@@ -40,5 +40,5 @@ jobs:
       - name: Sonar analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GIT_HUB_TOKEN }}
+          GITHUB_TOKEN: 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
         run: mvn -X -B clean verify sonar:sonar -Dsonar.token= ${{ secrets.SONAR_TOKEN }} -Dsonar.branch.name=$(Build.SourceBranchName) -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=margaritalm -Dsonar.projectKey=margaritalm_maven-samples -Dsonar.externalIssuesReportPaths=./cx_result_sonar.json
