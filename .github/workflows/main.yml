@@ -37,7 +37,7 @@ jobs:
             cx_tenant: ${{ secrets.CX_TENANT }}
             cx_client_id: ${{ secrets.CX_CLIENT_ID }}
             cx_client_secret: ${{ secrets.CX_CLIENT_SECRET }}
-            additional_params: --debug --report-format json,sonar --output-path .
+            additional_params: --scan-types sast --debug --report-format json,sonar --output-path .
       - name: upload sonar json
         uses: actions/upload-artifact@v3
         with:
@@ -48,4 +48,4 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           GITHUB_TOKEN: ${{ github.token }}
-        run: mvn -X -B clean verify sonar:sonar -Dsonar.token= ${{ secrets.SONAR_TOKEN }} -Dsonar.branch.name=$(Build.SourceBranchName) -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=uacdt -Dsonar.projectKey=uacdt_maven-samples -Dsonar.externalIssuesReportPaths=./cx_result_sonar.json
+        run: mvn -B clean verify sonar:sonar -Dsonar.token= ${{ secrets.SONAR_TOKEN }} -Dsonar.branch.name=$(Build.SourceBranchName) -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=uacdt -Dsonar.projectKey=uacdt_maven-samples -Dsonar.externalIssuesReportPaths=cx_result_sonar.json
