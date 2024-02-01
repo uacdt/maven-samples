@@ -33,10 +33,10 @@ jobs:
       - name: Checkmarx One CLI Action
         uses: checkmarx/ast-github-action@main
         with:
-            base_uri: ${{ secrets.BASE_URI }}
-            cx_tenant: ${{ secrets.TENANT }}
-            cx_client_id: ${{ secrets.CLIENT_ID }}
-            cx_client_secret: ${{ secrets.SECRET }}
+            base_uri: https://eu.ast.checkmarx.net
+            cx_tenant: ${{ secrets.CX_TENANT }}
+            cx_client_id: ${{ secrets.CX_CLIENT_ID }}
+            cx_client_secret: ${{ secrets.CX_CLIENT_SECRET }}
             additional_params: --debug --report-format json,sonar --output-path .
       - name: Sonar analyze
         env:
